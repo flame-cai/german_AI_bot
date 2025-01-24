@@ -42,7 +42,7 @@ const Chat = ({ selectedWeek }) => {
   const [practicePopupOpen, setPracticePopupOpen] = useState(false);
   const [currentCorrection, setCurrentCorrection] = useState('');
   const processedCorrectionsRef = useRef(new Set()); // Hold the correction text
-  const [isTyping, setIsTyping] = useState(false); 
+  const [isTyping, setIsTyping] = useState(false);
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');

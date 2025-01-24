@@ -8,12 +8,15 @@ import VocabVault from './components/VocabVault';
 import LoginPage from './components/LoginPage';
 import ProtectedRoute from './components/protectedRoute';
 import { AuthProvider } from './components/AuthContext';
+import PrivacyPopup from './components/PrivacyPopup';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [user, setUser] = useState(null);
   const [selectedWeek, setSelectedWeek] = useState('week1');
   const logoutTimerRef = useRef(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const handleLoginSuccess = (userData) => {
     const { token, expiresIn } = userData;
@@ -73,6 +76,15 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const togglePopup = () => {
+    setIsPopupOpen((prevState) => !prevState);
+  };
+
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+    console.log('Selected Option:', option);
+  };
+
   // useEffect(() => {
   // const handleTabClose = (event) => {
   //   // Clear only specific items
@@ -124,6 +136,11 @@ function App() {
                 {/* Add more weeks as needed */}
               </select>
             </div>
+            <div className="popup-button-container mt-auto">
+                <button className="popup-button" onClick={togglePopup}>
+                  Privacy Settings
+                </button>
+              </div>
             </>
         )}
           </nav>
@@ -151,6 +168,13 @@ function App() {
           </Routes>
         </div>
       </div>
+      {isPopupOpen && (
+        <PrivacyPopup
+          onClose={togglePopup}
+          // options={['Option 1', 'Option 2', 'Option 3']}
+          // onSelect={handleOptionSelect}
+        />
+      )}
     </Router>
     // </AuthProvider>
   );
