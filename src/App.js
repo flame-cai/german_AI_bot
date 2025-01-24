@@ -138,7 +138,7 @@ function App() {
             </div>
             <div className="popup-button-container mt-auto">
                 <button className="popup-button" onClick={togglePopup}>
-                  Privacy Settings
+                  Research Consent
                 </button>
               </div>
             </>

@@ -20,7 +20,7 @@ const GoogleSignIn = ({ onLoginSuccess }) => {
   useEffect(() => {
     if (isGoogleLoaded && window.google) {
       const handleCredentialResponse = async (response) => {
-        console.log("Encoded JWT ID token: " + response.credential);
+        // console.log("Encoded JWT ID token: " + response.credential);
         try {
           const backendResponse = await axios.post('https://asia-south1-ppt-tts.cloudfunctions.net/ge-lang-backend/login', {
             
